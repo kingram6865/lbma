@@ -19,14 +19,15 @@ const DATABASE = {
 
 const conn = mysql.createPool({...DATABASE, waitForConnections: true});
 
-async function populateSilver(data) {
+async function populateSilver() {
   let result, sql
+  const data = await getSilverData()
   const conn = mysql.createConnection(DATABASE);
   sql = "INSERT INTO lbma_silver_prices (price_date, frn, gbp, eur) VALUES (date_format(?, '%Y-%m-%d'), ?, ?, ?)"
   try {
     data.forEach(record => {
-      conn.query(sql, [record.price_date, record.frn, record.gbp, (record.euro) ? record.euro : 0 ])
-      console.log(`INSERTED ${record}`)  
+      conn.query(sql, [record.price_date, record.frn, record.gbp, (record.eur) ? record.eur : 0 ])
+      console.log(`INSERTED ${JSON.stringify(record)}`)  
     })
   } catch (err) {
     console.log(err)
@@ -43,14 +44,14 @@ async function dbLatest() {
   } catch (err) {
     console.log(err)
   } finally {
-    conn.end()
+    // conn.end()
     return results[0][0].last_price_date
   }
 }
 
-async function silverData() {
+async function getSilverData() {
   let results
-  const silverData = []
+  const silverDataRecords = []
 
   try {
     results = await axios(silverUrl)
@@ -62,34 +63,53 @@ async function silverData() {
     })
 
     results.data.forEach(element => {
-      silverData.push({
+      // console.log(element, element.d, element.v[0], element.v[1], element.v[2])
+
+      let newEntry = {
         price_date: element.d,
         frn: element.v[0],
         gbp: element.v[1],
-        encodeURIr: element.v[2]
-      })
+        eur: element.v[2]
+      }
+
+      // console.log(element, " ---- ", newEntry)
+      silverDataRecords.push(newEntry)
     })
-    return silverData
+    return silverDataRecords
   }
+}
+
+async function insertNewPrice(record) {
+  let results
+  let SQL = "INSERT INTO lbma_silver_prices (price_date, frn, gbp, eur) VALUES (date_format(?, '%Y-%m-%d'), ?, ?, ?)"
+  const input = [record.price_date, record.frn, record.gbp, record.eur]
+  SQL = mysql.format(SQL, input)
+
+  try {
+    results = await conn.promise().query(SQL)
+  } catch (err) {
+    console.log(`Line 85: ${JSON.stringify(err, null, 2)}`)
+  } 
+  // finally {
+  //   console.log(results)
+  // }
 }
 
 async function updateSilverData() {
   const lastPriceDate = await dbLatest()
-  const silverdata = await silverData()
-  let index = silverdata.map(record => record.price_date).indexOf(lastPriceDate)
-  console.log(index)
+  const silverdata = await getSilverData()
+  let index = silverdata.map(record => record.price_date).indexOf(lastPriceDate+1)
+  console.log(silverdata.slice(index))
+  silverdata.slice(index).forEach(entry => {
+    try {
+      insertNewPrice(entry)
+    } catch (err) {
+      console.log(`Line 102: ${JSON.stringify(err, null, 2)}`)
+    }
+  })
+
 }
 
-async function execute() {
-  let result = await dbLatest()
-  console.log(`Line 82: ${result}`)
-}
-
-// silverData()
-//   .then(x => {
-//     populateSilver(x)
-//   })
-
-// execute()
-
-updateSilverData()
+// populateSilver()
+// updateSilverData()
+getSilverData()
