@@ -63,16 +63,12 @@ async function getSilverData() {
     })
 
     results.data.forEach(element => {
-      // console.log(element, element.d, element.v[0], element.v[1], element.v[2])
-
       let newEntry = {
         price_date: element.d,
         frn: element.v[0],
         gbp: element.v[1],
         eur: element.v[2]
       }
-
-      // console.log(element, " ---- ", newEntry)
       silverDataRecords.push(newEntry)
     })
     return silverDataRecords
@@ -111,5 +107,5 @@ async function updateSilverData() {
 }
 
 // populateSilver()
-// updateSilverData()
-getSilverData()
+// getSilverData()
+updateSilverData()
