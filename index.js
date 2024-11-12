@@ -10,10 +10,10 @@ const pallamUrl = 'https://prices.lbma.org.uk/json/palladium_am.json?r=860541124
 const pallpmUrl = 'https://prices.lbma.org.uk/json/palladium_pm.json?r=74853627'
 
 const DATABASE = {
-  host:process.env.DBHOST, 
-  user: process.env.DBUSER, 
-  database: process.env.DB, 
-  password: process.env.DBPW, 
+  host:process.env.DBHOST,
+  user: process.env.DBUSER,
+  database: process.env.DB,
+  password: process.env.DBPW,
   port: process.env.DBPORT
 }
 
@@ -27,7 +27,7 @@ async function populateSilver() {
   try {
     data.forEach(record => {
       conn.query(sql, [record.price_date, record.frn, record.gbp, (record.eur) ? record.eur : 0 ])
-      console.log(`INSERTED ${JSON.stringify(record)}`)  
+      console.log(`INSERTED ${JSON.stringify(record)}`)
     })
   } catch (err) {
     console.log(err)
@@ -37,15 +37,17 @@ async function populateSilver() {
 }
 
 async function dbLatest() {
-  let results
+  let results, results2
   const SQL = "SELECT date_format(max(price_date), '%Y-%m-%d') as last_price_date FROM lbma_silver_prices"
+  let SQL2 = "SELECT objid FROM lbma_silver_prices WHERE date_format(price_date, '%Y-%m-%d') = ?"
   try {
     results = await conn.promise().query(SQL)
+    SQL2 = mysql.format(SQL2, results[0][0].last_price_date)
+    results2 = await conn.promise().query(SQL2)
   } catch (err) {
     console.log(err)
   } finally {
-    // conn.end()
-    return results[0][0].last_price_date
+    return {...results[0][0], ...results2[0][0]}
   }
 }
 
@@ -71,6 +73,7 @@ async function getSilverData() {
       }
       silverDataRecords.push(newEntry)
     })
+    //console.log(silverDataRecords)
     return silverDataRecords
   }
 }
@@ -80,32 +83,52 @@ async function insertNewPrice(record) {
   let SQL = "INSERT INTO lbma_silver_prices (price_date, frn, gbp, eur) VALUES (date_format(?, '%Y-%m-%d'), ?, ?, ?)"
   const input = [record.price_date, record.frn, record.gbp, record.eur]
   SQL = mysql.format(SQL, input)
-
+  console.log(SQL)
   try {
     results = await conn.promise().query(SQL)
   } catch (err) {
-    console.log(`Line 85: ${JSON.stringify(err, null, 2)}`)
-  } 
+    console.log(`Line 90: ${JSON.stringify(err, null, 2)}`)
+  }
   // finally {
   //   console.log(results)
   // }
 }
 
 async function updateSilverData() {
-  const lastPriceDate = await dbLatest()
+  let output
+  const lastPriceData = await dbLatest()
+  // console.log("Line 100: ", lastPriceData)
   const silverdata = await getSilverData()
-  let index = silverdata.map(record => record.price_date).indexOf(lastPriceDate+1)
-  console.log(silverdata.slice(index))
-  silverdata.slice(index).forEach(entry => {
-    try {
-      insertNewPrice(entry)
-    } catch (err) {
-      console.log(`Line 102: ${JSON.stringify(err, null, 2)}`)
-    }
-  })
 
+  let index = silverdata.map(record => record.price_date).indexOf(lastPriceData.last_price_date)
+  // console.log(silverdata.slice(index+1))
+  if (silverdata.slice(index+1).length > 0) {
+    console.log(`Last price date saved: ${lastPriceData.lastPriceData}, Last price date objid: ${lastPriceData.objid}, Current price data to save: ${JSON.stringify(silverdata.slice(index+1), null, 2)}`)
+    // console.log(`Last price date saved: ${lastPriceData.lastPriceData}, Last price date objid: ${lastPriceData.objid}, Current price data to save: ${JSON.stringify(silverdata.slice(index+1), null, 2)}`)
+
+    silverdata.slice(index + 1).forEach(async (entry, i) => {
+      console.log(i, entry)
+      try {
+        output = await insertNewPrice(entry)
+      } catch (err) {
+        console.log(`Line 102: ${JSON.stringify(err, null, 2)}`)
+      }
+    })
+  } else {
+    // console.log(`No data to store. Last price date saved: ${lastPriceData.last_price_date}`)
+    output = `No new data. Last price date saved: ${lastPriceData.last_price_date}`
+  }
+
+  return output;
 }
 
 // populateSilver()
 // getSilverData()
-updateSilverData()
+// await updateSilverData()
+async function execute() {
+  let results = await updateSilverData()
+  console.log("Line 128: ", results)
+  conn.end();
+}
+
+execute()
