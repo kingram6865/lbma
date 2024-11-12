@@ -9,7 +9,7 @@ The world’s trade in bullion is London-based with a global reach of activity a
 ## Purpose of this app
 
 The nature of fiat currency is tightly connected to inflation and the way the buying power of money is diminished by the effects of inflation.
-The US Treasury is the primary authority through which United States economic power is defeined.
+The US Treasury is the primary authority through which United States economic power is defined.
 
 While seeking to understand inflation and it's effect on the economy at an individual level, it occurred to me that I didn't understand what a "dollar" was in factual terms and as a matter of unitary economic power.
 
@@ -30,21 +30,21 @@ Dollars or Units|$1.00|	371+4⁄16 grain (24.1 g) pure or 416 grain (27.0 g) sta
 Half dollars|$0.50|	185+10⁄16 grain (12.0 g) pure or 208 grain (13.5 g) standard silver
 Quarter dollars|$0.25|	92+13⁄16 grain (6.01 g) pure or 104 grains (6.74 g) standard silver
 Dismes|	$0.10|37+2⁄16 grain (2.41 g) pure or 41+3⁄5 grain (2.70 g) standard silver
-Half dismes|$0.05|18+9⁄16 grain (1.20 g) pure or 20+4⁄5 grain (1.35 g) standard silver
+Half dismes[^1]|$0.05|18+9⁄16 grain (1.20 g) pure or 20+4⁄5 grain (1.35 g) standard silver
 Cents or Pennies|$0.01|11 pennyweights (17.1 g) of copper
 Half cents|$0.005|5+1⁄2 pennyweights (8.55 g) of copper
 
 With the creation of the Federal Reserve, federal reserve notes were generated to supplant gold and silver certificate money, and during World War II
-President Franklin D. Roosevelt instituted a gold confiscation act that was the beginning of the theft of wealth from the American people at large.
-This is my intuitive perspective, and a more learned and researched examination of the facts and circumstances regarding this confiscation is needed.
+
+President Franklin D. Roosevelt instituted a gold confiscation act that was the beginning of the theft of wealth from the American people at large. [Note that this is my intuitively deduced conclusion, based on the facts in evidence available to me. A more learned and deeper researched examination of the historical, legal and lawful facts and circumstances regarding this confiscation is needed.]
 
 Initially when the Federal Reserve was created, 1 FRN was equal to 1 USD.
 
-Over time, the FRN was debased, and eventually it completely replaced currency backed by precious metals.
+Over time, the FRN was debased[^2], and eventually it completely replaced currency backed by precious metals.
 
-In 1974 Nixon removed, negated or otherwise detached our currency from substance by taking the US off the gold standard.
+In 1974 Nixon removed, negated or otherwise detached our currency from substance by taking the US off the gold standard.[^3]
 
-What I found significant in light of the primacy of federal reserve notes was to track the price of silver and comparing it to the value of FRN's.
+What I found significant in light of the primacy of federal reserve notes was to track the price of silver and compare it to the value of FRN's.
 
 There is no consolidated record of gold and silver prices before 1964, so any price relationship prior to the creation of the federal reserve will have to be heavily researched.
 
@@ -58,14 +58,15 @@ and the relationship is that 1 USD is representable in some amount of FRN's, sin
 This proportion turns out to be the rate of inflation as well. FRNs are no longer a direct exchange with 1 USD. It takes more than 1 FRN to purchase 
 1oz of silver. 
 
-Thus our labor, expressed in FRN's essentially requires a greater amount of scrip money to purchase what 1 USD can purchase.
+Thus our labor, expressed in FRN's essentially requires a greater amount of those FRN's to purchase what 1 USD can purchase.
 
 The math is calculated in this way:
 
 1 oz = 28.3495g
-1 USD = 27g
 
-27g - 28.3495g = 1.3495g = 1 half dismes (nickel)
+1 USD = 27g/416 grain silver
+
+28.3495g - 27g = 1.3495g = 1 half dismes (nickel)
 
 The ratio of 1 USD to 1 oz of silver is 27g/28.3495g = .9524, 
 
@@ -73,22 +74,22 @@ The ratio of 1 half dismes to 1 oz of silver is 1.3495g/28.3495g = .0481
 
 1 oz of silver is equivalent to $1.05 USD.
 
-Using the LBMA data, we can determine how many FRNs it takes to buy 1 ounce of silver and see how many FRNs are in a USD
+Using the LBMA data, we are shown how many FRNs it takes to buy 1 ounce of silver and based on this data we can see how many FRNs are in a USD.
 
 On 2017-03-31 1 oz of silver had a closing price of 18.060FRN
 
 1 USD = .9524 of an ounce, therefore 1 USD = (.9524 * 18.060FRN) = 17.2003440FRN
 
-If we look at two week averages of silver prices (tracking cost per payday), it will be easy to see that on average,
-It took 17FRNs to buy the same amount of products that takes 1 USD.
+If we look at two week averages of silver prices (tracking cost per payday), it will be easy to see that on average, it took 17FRNs to buy the same amount of products that takes 1 USD.
 
-In essence we are using FRNs as scrip money and we are not making purchases with money backed by substance.
+In essence we are using FRNs as type of scrip money and we are not making purchases with money backed by substance.
+
 Our money is backed by "faith and credit". This means that the currency is manipulatable and this is the means by which
-populaces are controlled.
+populaces are controlled. We are not obtaining a fair and consistent exchange of our labor when we deal in FRNs.
 
 ## The consequences of having FRN instead of USD
 I have to do more research and find old notes, but apparently, the corporate United States government is in a form of 
-voluntary bankruptcy where expenditures outside of the "household" are regulated and internally transactions are only done with scrip money.
+voluntary bankruptcy where expenditures outside of the "household" are regulated and internally transactions are only done with scrip money.[^4]
 
 We pay a fee for using the scrip money, because the Federal Reserve is the debt holder and they manage the transactions with entities "outside the household".
 
@@ -102,7 +103,7 @@ This means that a USD is still defined as 27g of standard silver, therefore this
 
 I don't have enough solid research to make any claims nor do I wish to make this understanding broadly available as I think people will misuse this information and in fact use it before the implications and consequences of the understanding can be properly assessed.
 
-So as an example in this table of price dates we can see that given the date and price, 1 USD is equivalent to n FRN's, and a dismes has a similar equivalence.
+So as an example in this table of price dates we can see that given the date and price, 1 USD is equivalent to *n* FRN's, and a dismes has a similar equivalence.
 
 
 | price_date | frn    | gbp    | eur    | frns_per_usd | frns_per_dismes |
@@ -113,6 +114,14 @@ So as an example in this table of price dates we can see that given the date and
 
 So on 2023-03-29, it takes 22.15 FRN's to buy what 1 USD would buy.
 
-That means if gas is 4.75/gallon it's essentially 4*1.12 = 4.48 or .20 + some pennies in USD. Maybe .25 cent a gallon in USD.
+That means if gas is 4.75/gallon it's essentially 4*1.12 = 4.48 dismes or .20 + some pennies in USD. Maybe .25-.40 cents a gallon in USD.
 
-What theis demonstrates is that the wealth of people is being stolen on a daily basis by the federal reserve system.
+What this demonstrates is that the wealth of people is being outright stolen on a daily basis by the federal reserve system, a dismes at a time.
+
+[^1]: This term was adapted from the French word dixième, meaning "tenth".
+
+[^2]: the process of printing more paper money without  backing it with real assets, leading to a decrease in its real value.
+
+[^3]: It would be a very good idea to research this action by Nixon and determine the full facts as they stand.
+
+[^4]: Revising this README 2024-11-11. There is a Chapter 9 Municipal Bankruptcy which may be the manner in which the currency system is operating. Further research is necessary
