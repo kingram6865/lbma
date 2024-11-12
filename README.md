@@ -6,10 +6,52 @@
 
 The world’s trade in bullion is London-based with a global reach of activity and participants. The roots of the London Bullion Market can be traced to the partnership between Moses Mocatta and the East India Company, who started shipping gold together towards the end of the 17th century. Shortly afterwards, while Sir Isaac Newton was master of the Royal Mint, gold in England was overvalued so it became more freely circulated than silver. This increased circulation quickly led to England having a gold based coinage, whereas the rest of Europe remained silver based until the 1850s."
 
+## App Configuration
+
+Create a *.env* file:
+```bash
+DBHOST=<ip address or server name>
+DBPORT=<3306, 5432 or whatever port is being used>
+DBUSER=<username>
+DBPW=<user password>
+DB=<finances or some name>
+```
+
+### Database
+
+This app relies on a table with the following schema:
+
+```sql
++-----------------+--------------+------+-----+---------+----------------+
+| Field           | Type         | Null | Key | Default | Extra          |
++-----------------+--------------+------+-----+---------+----------------+
+| objid           | bigint       | NO   | PRI | NULL    | auto_increment |
+| entry_date      | datetime     | YES  |     | NULL    |                |
+| price_date      | date         | YES  |     | NULL    |                |
+| frn             | decimal(7,3) | YES  |     | NULL    |                |
+| gbp             | decimal(7,3) | YES  |     | NULL    |                |
+| eur             | decimal(7,3) | YES  |     | NULL    |                |
+| frns_per_usd    | decimal(7,3) | YES  |     | NULL    |                |
+| frns_per_dismes | decimal(7,3) | YES  |     | NULL    |                |
++-----------------+--------------+------+-----+---------+----------------+
+```
+
+The code currently references the table *lbma_silver_prices*. Make sure to
+use this name OR change the code to reflect the table name being used.
+
 ## Purpose of this app
 
+This app retrieves and stores the daily price of silver as determined by the LBMA.
+
+While this data is available on line at the LBMA, maintaining a private repository of the price history seems important. For example, the Federal  Reserve decided to stop providing M1 and M2 data back in 2006 or so. To me this is a preparatory move in the overall strategy to obfuscate financial data and keep it out of the hands of the average person. 
+
+If financial data becomes proprietary, over time, the people will lose all understanding of finance and economics, creating a path to the return of a peasant class and serfdom.
+
+## History influencing the creation of this code base
+
 The nature of fiat currency is tightly connected to inflation and the way the buying power of money is diminished by the effects of inflation.
-The US Treasury is the primary authority through which United States economic power is defined.
+
+The US Treasury is the primary authority through which United States economic power is affected. In practical terms other effects may precede or follow the Treasury however, as a matter of lawful and legal effect, the Treasury is the prime authority for how currency moves in the United States.
 
 While seeking to understand inflation and it's effect on the economy at an individual level, it occurred to me that I didn't understand what a "dollar" was in factual terms and as a matter of unitary economic power.
 
@@ -24,7 +66,8 @@ The Act authorized production of the following coins:
 Coin|Value|Description
 ---|---|---
 Eagles|	$10.00|	247+4⁄8 grain (16.04 g) pure or 270 grain (17.5 g) standard gold
-Half eagles|$5.00|	123+6⁄8 grain (8.02 g) pure or 135 grain (8.75 g) standard gold
+Half eagle
+s|$5.00|	123+6⁄8 grain (8.02 g) pure or 135 grain (8.75 g) standard gold
 Quarter eagles|$2.50|	61+7⁄8 grain (4.01 g) pure or 67+4⁄8 grain (4.37 g) standard gold
 Dollars or Units|$1.00|	371+4⁄16 grain (24.1 g) pure or 416 grain (27.0 g) standard silver
 Half dollars|$0.50|	185+10⁄16 grain (12.0 g) pure or 208 grain (13.5 g) standard silver
