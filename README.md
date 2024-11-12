@@ -1,5 +1,6 @@
 # London Bullion Market Association Precious Metal Price Index
 
+## History
 [Origins of the London Bullion Market](https://www.lbma.org.uk/market-standards/origins-of-the-london-bullion-market)
 
 "When the Bank of England established LBMA in 1987, we took over the roles of two organisations – the London Gold Market and London Silver Market – with origins in the nineteenth century.
@@ -19,7 +20,7 @@ DB=<finances or some name>
 
 ### Database
 
-This app relies on a table with the following schema:
+This code relies on a table with the following schema:
 
 ```sql
 +-----------------+--------------+------+-----+---------+----------------+
@@ -39,15 +40,17 @@ This app relies on a table with the following schema:
 The code currently references the table *lbma_silver_prices*. Make sure to
 use this name OR change the code to reflect the table name being used.
 
-## Purpose of this app
+The *entry_date* field is populated by am insert trigger, so either create one in the table or adjust the code to insert the data entry date as well.
 
-This app retrieves and stores the daily price of silver as determined by the LBMA.
+## Purpose of this code base
+
+This code retrieves and stores the daily price of silver as determined by the LBMA.
 
 While this data is available on line at the LBMA, maintaining a private repository of the price history seems important. For example, the Federal  Reserve decided to stop providing M1 and M2 data back in 2006 or so. To me this is a preparatory move in the overall strategy to obfuscate financial data and keep it out of the hands of the average person. 
 
 If financial data becomes proprietary, over time, the people will lose all understanding of finance and economics, creating a path to the return of a peasant class and serfdom.
 
-## History influencing the creation of this code base
+## Background
 
 The nature of fiat currency is tightly connected to inflation and the way the buying power of money is diminished by the effects of inflation.
 
