@@ -79,9 +79,7 @@ Half dismes[^1]|$0.05|18+9⁄16 grain (1.20 g) pure or 20+4⁄5 grain (1.35 g) s
 Cents or Pennies|$0.01|11 pennyweights (17.1 g) of copper
 Half cents|$0.005|5+1⁄2 pennyweights (8.55 g) of copper
 
-With the creation of the Federal Reserve, federal reserve notes were generated to supplant gold and silver certificate money, and during World War II
-
-President Franklin D. Roosevelt instituted a gold confiscation act that was the beginning of the theft of wealth from the American people at large. [Note that this is my intuitively deduced conclusion, based on the facts in evidence available to me. A more learned and deeper researched examination of the historical, legal and lawful facts and circumstances regarding this confiscation is needed.]
+With the creation of the Federal Reserve, federal reserve notes were generated to supplant gold and silver certificate money, and during World War II President Franklin D. Roosevelt instituted a gold confiscation act that was the beginning of the theft of wealth from the American people at large. [Note that this is my intuitively deduced conclusion, based on the facts in evidence available to me. A more learned and deeper researched examination of the historical, legal and lawful facts and circumstances regarding this confiscation is needed.]
 
 Initially when the Federal Reserve was created, 1 FRN was equal to 1 USD.
 
