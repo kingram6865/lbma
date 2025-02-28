@@ -86,32 +86,33 @@ async function insertNewPrice(record) {
   console.log(SQL)
   try {
     results = await conn.promise().query(SQL)
+    console.log(`Line 89: Added ${input} as objid: ${results.insertId}`)
   } catch (err) {
-    console.log(`Line 90: ${JSON.stringify(err, null, 2)}`)
+    console.log(`Line 91: ${JSON.stringify(err, null, 2)}`)
   }
-  // finally {
-  //   console.log(results)
-  // }
+
+  return results
 }
 
 async function updateSilverData() {
   let output
   const lastPriceData = await dbLatest()
-  // console.log("Line 100: ", lastPriceData)
+  console.log("Line 101: ", lastPriceData)
   const silverdata = await getSilverData()
 
   let index = silverdata.map(record => record.price_date).indexOf(lastPriceData.last_price_date)
   // console.log(silverdata.slice(index+1))
   if (silverdata.slice(index+1).length > 0) {
-    console.log(`Last price date saved: ${lastPriceData.lastPriceData}, Last price date objid: ${lastPriceData.objid}, Current price data to save: ${JSON.stringify(silverdata.slice(index+1), null, 2)}`)
+    console.log(`Last price date saved: ${lastPriceData.last_price_date}, Last price date objid: ${lastPriceData.objid}, Current price data to save: ${JSON.stringify(silverdata.slice(index+1), null, 2)}`)
     // console.log(`Last price date saved: ${lastPriceData.lastPriceData}, Last price date objid: ${lastPriceData.objid}, Current price data to save: ${JSON.stringify(silverdata.slice(index+1), null, 2)}`)
 
     silverdata.slice(index + 1).forEach(async (entry, i) => {
-      console.log(i, entry)
+      // console.log(i, entry)
       try {
         output = await insertNewPrice(entry)
+        console.log(output)
       } catch (err) {
-        console.log(`Line 102: ${JSON.stringify(err, null, 2)}`)
+        console.log(`Line 116: ${JSON.stringify(err, null, 2)}`)
       }
     })
   } else {
@@ -127,8 +128,7 @@ async function updateSilverData() {
 // await updateSilverData()
 async function execute() {
   let results = await updateSilverData()
-  console.log("Line 128: ", results)
-  conn.end();
+  console.log("Line 132: ", results)
 }
 
 execute()
