@@ -69,8 +69,7 @@ The Act authorized production of the following coins:
 Coin|Value|Description
 ---|---|---
 Eagles|	$10.00|	247+4⁄8 grain (16.04 g) pure or 270 grain (17.5 g) standard gold
-Half eagle
-s|$5.00|	123+6⁄8 grain (8.02 g) pure or 135 grain (8.75 g) standard gold
+Half eagles|$5.00|	123+6⁄8 grain (8.02 g) pure or 135 grain (8.75 g) standard gold
 Quarter eagles|$2.50|	61+7⁄8 grain (4.01 g) pure or 67+4⁄8 grain (4.37 g) standard gold
 Dollars or Units|$1.00|	371+4⁄16 grain (24.1 g) pure or 416 grain (27.0 g) standard silver
 Half dollars|$0.50|	185+10⁄16 grain (12.0 g) pure or 208 grain (13.5 g) standard silver
