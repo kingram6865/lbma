@@ -83,7 +83,7 @@ async function insertNewPrice(record) {
   let SQL = "INSERT INTO lbma_silver_prices (price_date, frn, gbp, eur) VALUES (date_format(?, '%Y-%m-%d'), ?, ?, ?)"
   const input = [record.price_date, record.frn, record.gbp, record.eur]
   SQL = mysql.format(SQL, input)
-  console.log(SQL)
+  console.log("Line 86: ", SQL)
   try {
     results = await conn.promise().query(SQL)
     console.log(`Line 89: Added ${input} as objid: ${results.insertId}`)
@@ -97,7 +97,7 @@ async function insertNewPrice(record) {
 async function updateSilverData() {
   let output
   const lastPriceData = await dbLatest()
-  console.log("Line 101: ", lastPriceData)
+  console.log("Line 100: ", lastPriceData)
   const silverdata = await getSilverData()
 
   let index = silverdata.map(record => record.price_date).indexOf(lastPriceData.last_price_date)
@@ -110,9 +110,9 @@ async function updateSilverData() {
       // console.log(i, entry)
       try {
         output = await insertNewPrice(entry)
-        console.log(output)
+        console.log("Line 113: ", output)
       } catch (err) {
-        console.log(`Line 116: ${JSON.stringify(err, null, 2)}`)
+        console.log(`Line 115: ${JSON.stringify(err, null, 2)}`)
       }
     })
   } else {
@@ -128,7 +128,7 @@ async function updateSilverData() {
 // await updateSilverData()
 async function execute() {
   let results = await updateSilverData()
-  console.log("Line 132: ", results)
+  console.log("Line 131: ", results)
 }
 
 execute()
