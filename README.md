@@ -36,11 +36,13 @@ This code relies on a table with the following schema:
 | frns_per_dismes | decimal(7,3) | YES  |     | NULL    |                |
 +-----------------+--------------+------+-----+---------+----------------+
 ```
-
+```bash
+Notes:
 The code currently references the table *lbma_silver_prices*. Make sure to
 use this name OR change the code to reflect the table name being used.
 
-The *entry_date* field is populated by am insert trigger, so either create one in the table or adjust the code to insert the data entry date as well.
+The *entry_date* field is populated by an insert trigger, so either create one in the table or adjust the code to insert the data entry date as well.
+```
 
 ## Purpose of this code base
 
@@ -58,7 +60,7 @@ The US Treasury is the primary authority through which United States economic po
 
 While seeking to understand inflation and it's effect on the economy at an individual level, it occurred to me that I didn't understand what a "dollar" was in factual terms and as a matter of unitary economic power.
 
-Looking at the [Coinage Act of 1792](https://en.wikipedia.org/wiki/Coinage_Act_of_1792) we can find the definition of a US Dollar in factual terms.
+Looking at the [Coinage Act of 1792](https://en.wikipedia.org/wiki/Coinage_Act_of_1792) we can find the definition of a US Dollar in factual legal and lawful terms.
 
 "A fixed exchange rate, often called a pegged exchange rate, is a type of exchange rate regime in which a currency's value is fixed or pegged by a monetary authority against the value of another currency, a basket of other currencies, or another measure of value, such as gold."
 
